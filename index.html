@@ -5,22 +5,52 @@
 		<title>Vul-js</title>
 	</head>
 	<body>
-		<header>
-			<h1>Vul JS</h1>
-		</header>
 		<nav>
+			<header>
+				<h1>Vul JS</h1>
+			</header>			
+		</nav>
+
+		<aside>
 			<h2>Vulnerabilities</h2>
 			<ul>
-				<a href="vulnerabilities/cross-site-scripting.html">Cross-Site Scripting (XSS)</a>
-				<a href="vulnerabilities/open-redirect.html">Open Redirect</a>
-				<a href="vulnerabilities/reverse-tabnabbing.html">Reverse Tabnabbing</a>
-				<a href="vulnerabilities/vulnerable-components.html">Vulnerable and Outdated components</a>
-				<a href="vulnerabilities/cross-site-request-forgery.html">Cross-Site Request Forgery (CSRF)</a>
-				<a href="vulnerabilities/security-misconfiguration.html">Security Misconfiguration</a>
-				<a href="vulnerabilities/path-traversal.html">Path Traversal</a>
+				<li>
+					<a href="vulnerabilities/cross-site-scripting.html">Cross-Site Scripting (XSS)</a>
+				</li>
+				<li>
+					<a href="vulnerabilities/open-redirect.html">Open Redirect</a>
+				</li>
+				<li>
+					<a href="vulnerabilities/reverse-tabnabbing.html">Reverse Tabnabbing</a>
+				</li>
+				<li>
+					<a href="vulnerabilities/vulnerable-components.html">Vulnerable and Outdated components</a>
+				</li>
+				<li>
+					<a href="vulnerabilities/cross-site-request-forgery.html">Cross-Site Request Forgery (CSRF)</a>
+				</li>
+				<li>
+					<a href="vulnerabilities/security-misconfiguration.html">Security Misconfiguration</a>
+				</li>
+				<li>
+					<a href="vulnerabilities/path-traversal.html">Path Traversal</a>
+				</li>
 			</ul>			
-		</nav>
+		</aside>
 			
-		</footer>
+		<section id="vulcontent">
+			
+		</section>
+
+		<script type="text/javascript">
+			document.querySelectorAll('a').forEach(link => {
+				link.onclick = function(e){
+					e.preventDefault()
+					const vulcontent = document.getElementById("vulcontent")
+					fetch(link.href)
+						.then(resp => resp.text())
+						.then(html => vulcontent.innerHTML = html)
+			}})
+		</script>
 	</body>
 </html>
